@@ -28,16 +28,13 @@ VALID_DDDS = {
 LOCAL_OPTIONS = [
     {"id": "1", "nome": "INSTITUTO OLGA BARROSO"},
 ]
-
 COURSE_CATALOG = [
     {"id": "1", "nome": "26/OFDN 004 - OFICINA DE DAN\u00c7A"},
     {"id": "2", "nome": "26/OFDN 005 - OFICINA DE DAN\u00c7A"},
 ]
-
 SCHEDULE_OPTIONS = {
     "1": {"dias_aula": "Quinta", "horario": "19h at\u00e9 20h"},
 }
-
 START_DATE_OPTIONS = {
     "1": "13/08/2026",
     "2": "20/08/2026",
@@ -46,11 +43,9 @@ END_DATE_OPTIONS = {
     "1": "13/08/2026",
     "2": "20/08/2026",
 }
-
 ADDRESS_OPTIONS = {
     "1": "\U0001f4cdRua Olga Barroso, n\u00ba 310 - Mucuripe - Fortaleza, CE - CEP.: 60175-390.",
 }
-
 TURMA_OPTIONS = [
     {"id":"1","curso_id":"1","local_id":"1","turma_codigo":"26/OFDN-004",
      "agenda_id":"1","periodo_id":"1","encerramento_id":"1","endereco_id":"1"},
@@ -186,7 +181,6 @@ TEMPLATE_WIZARD = """\
         .wizard-panel[data-step="escolher"] .step-grid.step-grid--stacked { max-width: 470px; }
         .wizard-panel[data-step="escolher"] .form-group, .wizard-panel[data-step="escolher"] .form-group.full { width: 100%; max-width: 100%; }
         .wizard-panel[data-step="escolher"] .input-with-action { width: 100%; max-width: 100%; }
-        .wizard-panel[data-step="escolher"] #local_display, .wizard-panel[data-step="escolher"] #dias_aula, .wizard-panel[data-step="escolher"] #horario, .wizard-panel[data-step="escolher"] #data_inicio, .wizard-panel[data-step="escolher"] #encerramento, .wizard-panel[data-step="escolher"] #endereco_curso { width: 100% !important; min-width: 0 !important; max-width: 100% !important; margin: 0 !important; }
         select:disabled { background-color: #f5d0d0; cursor: not-allowed; opacity: 0.7; }
         .form-group { display: flex; flex-direction: column; gap: 4px; width: 100%; align-self: start; align-items: center; text-align: center; }
         .form-group.full { grid-column: 1 / -1; }
@@ -225,14 +219,9 @@ TEMPLATE_WIZARD = """\
         .review-check ul { margin: 8px 0 0 18px; padding: 0; list-style-position: outside; text-align: left; }
         .review-box .form-group { align-items: stretch; text-align: left; }
         .review-box .form-group label { width: 100%; text-align: left; }
-        @media (max-width: 860px) {
-            .hero-grid, .review-layout { grid-template-columns: 1fr; }
-            .step-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
-            .step-grid.step-grid--stacked { grid-template-columns: minmax(0, 1fr); max-width: 540px; }
-        }
+        @media (max-width: 860px) { .hero-grid, .review-layout { grid-template-columns: 1fr; } .step-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; } .step-grid.step-grid--stacked { grid-template-columns: minmax(0, 1fr); max-width: 540px; } }
         @media (max-width: 640px) {
-            html, body { width: 100% !important; max-width: 100% !important; overflow-x: hidden !important; }
-            body * { min-width: 0; } body { overflow-x: hidden; }
+            html, body { width: 100% !important; max-width: 100% !important; overflow-x: hidden !important; } body * { min-width: 0; } body { overflow-x: hidden; }
             .main-header { padding: 8px 12px; } .header-logos { gap: 12px; } .header-divider { height: 36px; }
             .logo-prefeitura-topo, .logo-projeto-topo { height: 36px; max-width: min(30vw, 110px); }
             .wizard-page { width: calc(100% - 8px) !important; max-width: 100% !important; padding: 4px 0 10px; }
@@ -319,16 +308,12 @@ TEMPLATE_WIZARD = """\
                             </div>
                         </div>
                         <div style="margin-top:18px; text-align:center;">
-                            <button type="button" class="cta-button" data-next="dados"
-                                    style="width:100%;max-width:360px;min-height:54px;padding:14px 22px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;background:linear-gradient(90deg,#8b0000 0%,#c23b3b 100%);color:#fff;border:none;border-radius:18px;cursor:pointer;box-shadow:0 10px 24px rgba(139,0,0,0.24);">
-                                Come&#231;ar inscri&#231;&#227;o
-                            </button>
+                            <button type="button" class="cta-button" data-next="dados" style="width:100%;max-width:360px;min-height:54px;padding:14px 22px;font-weight:800;letter-spacing:0.04em;text-transform:uppercase;background:linear-gradient(90deg,#8b0000 0%,#c23b3b 100%);color:#fff;border:none;border-radius:18px;cursor:pointer;box-shadow:0 10px 24px rgba(139,0,0,0.24);">Come&#231;ar inscri&#231;&#227;o</button>
                         </div>
                     </div></div>
                 </section>
                 <section class="wizard-panel" data-step="dados">
-                    <div class="step-card">
-                        <h2 class="panel-title">Dados pessoais</h2>
+                    <div class="step-card"><h2 class="panel-title">Dados pessoais</h2>
                         <div class="step-grid step-grid--stacked">
                             <div class="form-group full"><label for="nome">Nome completo *</label><input type="text" id="nome" name="nome" maxlength="50" placeholder="Digite seu nome completo" value="{{ form_data.get('nome', '') }}"><div class="balao-erro" id="nome-error" {% if not errors.get('nome') %}hidden{% endif %}>{{ errors.get('nome', '') }}</div></div>
                             <div class="form-group"><label for="genero">G&#234;nero *</label><select id="genero" name="genero"><option value="">Selecione</option>{% for genero in generos %}<option value="{{ genero }}" {% if form_data.get('genero') == genero %}selected{% endif %}>{{ genero }}</option>{% endfor %}</select><div class="balao-erro" id="genero-error" {% if not errors.get('genero') %}hidden{% endif %}>{{ errors.get('genero', '') }}</div></div>
@@ -346,8 +331,7 @@ TEMPLATE_WIZARD = """\
                     </div>
                 </section>
                 <section class="wizard-panel" data-step="escolher">
-                    <div class="step-card">
-                        <h2 class="panel-title">Escolha seu curso</h2>
+                    <div class="step-card"><h2 class="panel-title">Escolha seu curso</h2>
                         <div class="step-grid step-grid--stacked">
                             <div class="form-group full"><label for="curso_id">Curso *</label><select id="curso_id" name="curso_id"><option value="">Selecione um curso</option>{% for curso in course_catalog %}<option value="{{ curso.id }}" {% if form_data.get('curso_id') == curso.id %}selected{% endif %}>{{ curso.nome }}</option>{% endfor %}</select><div class="balao-erro" id="curso_id-error" {% if not errors.get('curso_id') %}hidden{% endif %}>{{ errors.get('curso_id', '') }}</div></div>
                             <div class="form-group full" id="local-group" style="display:none;"><label for="local_id_select">Local *</label><select id="local_id_select"><option value="">Selecione um local</option></select><div class="balao-erro" id="local_id-error" hidden></div></div>
@@ -371,8 +355,7 @@ TEMPLATE_WIZARD = """\
                     </div>
                 </section>
                 <section class="wizard-panel" data-step="revisao">
-                    <div class="step-card">
-                        <h2 class="panel-title">Confira seus dados para finaliza&#231;&#227;o</h2>
+                    <div class="step-card"><h2 class="panel-title">Confira seus dados para finaliza&#231;&#227;o</h2>
                         <p class="panel-subtitle">Confira os dados preenchidos e confirme sua participa&#231;&#227;o.</p>
                         <div class="review-layout">
                             <div class="review-box"><div class="review-title">Dados pessoais</div><div class="review-list">
@@ -483,6 +466,7 @@ TEMPLATE_WIZARD = """\
 </body>
 </html>
 """
+
 TEMPLATE_CONFIRMACAO = """\
 <!DOCTYPE html>
 <html lang="pt-br">
@@ -575,8 +559,9 @@ TEMPLATE_CONFIRMACAO = """\
 </body>
 </html>
 """
+
 # =============================================================================
-# APLICAÇÃO FLASK
+# APLICAÇÃO FLASK — regex Python CORRETAS
 # =============================================================================
 app = Flask(__name__)
 app.secret_key = os.environ.get("FLASK_SECRET_KEY", "chave-secreta-para-sessao")
@@ -602,7 +587,7 @@ def get_default_form_data(source=None):
     return form_data
 
 def cpf_valido(cpf):
-    digits = re.sub(r"\\D", "", cpf or "")
+    digits = re.sub(r"\D", "", cpf or "")
     if len(digits) != 11 or len(set(digits)) == 1: return False
     total = sum(int(digits[i]) * (10 - i) for i in range(9))
     digit = (total * 10) % 11; digit = 0 if digit == 10 else digit
@@ -619,9 +604,9 @@ def idade_aceita(nascimento):
     return 16 <= idade <= 90
 
 def whatsapp_valido(whatsapp):
-    digits = re.sub(r"\\D", "", whatsapp or "")
+    digits = re.sub(r"\D", "", whatsapp or "")
     if len(digits) != 11: return False
-    if not re.fullmatch(r"\\(\\d{2}\\) \\d{5}-\\d{4}", whatsapp or ""): return False
+    if not re.fullmatch(r"\(\d{2}\) \d{5}-\d{4}", whatsapp or ""): return False
     return digits[:2] in VALID_DDDS
 
 def validate_form_data(form_data):
@@ -630,26 +615,26 @@ def validate_form_data(form_data):
     selected_option = get_course_option(form_data.get("opcao_id", ""))
     if not selected_curso: errors["curso_id"] = "Selecione um curso."
     if not selected_option:
-        errors["curso_id"] = errors.get("curso_id", "Selecione um local e hor\\u00e1rio para o curso.")
+        errors["curso_id"] = errors.get("curso_id", "Selecione um local e hor\u00e1rio para o curso.")
     elif selected_option and selected_curso and selected_option["curso_id"] != selected_curso:
-        errors["curso_id"] = "A turma n\\u00e3o pertence ao curso escolhido."
+        errors["curso_id"] = "A turma n\u00e3o pertence ao curso escolhido."
     nome = form_data["nome"]
     if not nome: errors["nome"] = "Digite seu nome completo."
-    elif len(nome) > 50: errors["nome"] = "O nome deve ter no m\\u00e1ximo 50 caracteres."
+    elif len(nome) > 50: errors["nome"] = "O nome deve ter no m\u00e1ximo 50 caracteres."
     elif not NAME_PATTERN.fullmatch(nome): errors["nome"] = "Use apenas letras e sinais permitidos no nome."
-    if form_data["genero"] not in {"Feminino","Masculino","Outro","Prefiro n\\u00e3o dizer"}:
-        errors["genero"] = "Selecione o g\\u00eanero."
-    if not cpf_valido(form_data["cpf"]): errors["cpf"] = "CPF inv\\u00e1lido. Verifique e digite novamente."
-    if not idade_aceita(form_data["nascimento"]): errors["nascimento"] = "Idade permitida: de 16 at\\u00e9 90 anos."
-    if not whatsapp_valido(form_data["whatsapp"]): errors["whatsapp"] = "Informe um WhatsApp com DDD v\\u00e1lido do Brasil."
-    if not re.fullmatch(r"\\d{5}-\\d{3}", form_data["cep"] or ""): errors["cep"] = "CEP inv\\u00e1lido. Formato: 00000-000."
+    if form_data["genero"] not in {"Feminino","Masculino","Outro","Prefiro n\u00e3o dizer"}:
+        errors["genero"] = "Selecione o g\u00eanero."
+    if not cpf_valido(form_data["cpf"]): errors["cpf"] = "CPF inv\u00e1lido. Verifique e digite novamente."
+    if not idade_aceita(form_data["nascimento"]): errors["nascimento"] = "Idade permitida: de 16 at\u00e9 90 anos."
+    if not whatsapp_valido(form_data["whatsapp"]): errors["whatsapp"] = "Informe um WhatsApp com DDD v\u00e1lido do Brasil."
+    if not re.fullmatch(r"\d{5}-\d{3}", form_data["cep"] or ""): errors["cep"] = "CEP inv\u00e1lido. Formato: 00000-000."
     bairro = form_data["bairro"]
     if not bairro: errors["bairro"] = "Informe o bairro."
-    elif len(bairro) > 40: errors["bairro"] = "O bairro deve ter no m\\u00e1ximo 40 caracteres."
+    elif len(bairro) > 40: errors["bairro"] = "O bairro deve ter no m\u00e1ximo 40 caracteres."
     if not ALLOWED_EMAIL_PATTERN.fullmatch(form_data["email"] or ""):
-        errors["email"] = "Digite um e-mail v\\u00e1lido do Gmail, Hotmail, Outlook ou Yahoo."
+        errors["email"] = "Digite um e-mail v\u00e1lido do Gmail, Hotmail, Outlook ou Yahoo."
     if form_data["confirma_dados"] != "sim":
-        errors["confirma_dados"] = "Confirme os dados para finalizar a inscri\\u00e7\\u00e3o."
+        errors["confirma_dados"] = "Confirme os dados para finalizar a inscri\u00e7\u00e3o."
     return errors
 
 def error_step(errors):
@@ -669,7 +654,7 @@ def render_wizard(form_data=None, errors=None, current_step="index"):
         current_step   = current_step,
         errors         = errors or {},
         form_data      = current_form_data,
-        generos        = ["Feminino","Masculino","Outro","Prefiro n\\u00e3o dizer"],
+        generos        = ["Feminino","Masculino","Outro","Prefiro n\u00e3o dizer"],
     )
 
 @app.route("/", methods=["GET"])
@@ -729,11 +714,11 @@ SUPABASE_API_KEY = os.environ.get(
 )
 
 def normalize_phone_number(phone):
-    digits = re.sub(r"[^\\d]", "", phone or "")
+    digits = re.sub(r"[^\d]", "", phone or "")
     return f"55{digits}" if len(digits) == 11 else digits
 
 def send_registration_to_supabase(form_data):
-    phone = normalize_phone_number(form_data.get("whatsapp", ""))
+    phone       = normalize_phone_number(form_data.get("whatsapp", ""))
     data_inicio = form_data.get("data_inicio", "")
     horario     = form_data.get("horario", "")
     inicioaula  = f"{data_inicio} {horario}".strip() if data_inicio else horario
@@ -743,7 +728,7 @@ def send_registration_to_supabase(form_data):
         "curso":          form_data.get("curso", ""),
         "turma":          form_data.get("turma", ""),
         "nomelocal":      form_data.get("local", ""),
-        "endere\\u00e7o": form_data.get("endereco_curso", ""),
+        "endereco":       form_data.get("endereco_curso", ""),
         "inicioaula":     inicioaula,
         "local":          form_data.get("local", ""),
         "dia_semana":     form_data.get("dias_aula", ""),
